@@ -115,6 +115,8 @@ impl AvroCodec for i64 {
 impl AvroCodec for usize {
     #[inline]
     fn encode(&self) -> Vec<u8> {
+        (*self as i64).encode()
+            /*
         if *self == 0 {
             return vec![0u8];
         }
@@ -132,6 +134,7 @@ impl AvroCodec for usize {
         }
 
         encoded
+        */
     }
 
     #[inline]
